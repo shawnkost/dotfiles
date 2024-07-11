@@ -1,6 +1,7 @@
 {
   "extras": [
     "lazyvim.plugins.extras.lang.go",
+    "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.ui.mini-animate",
     "lazyvim.plugins.extras.util.mini-hipatterns"
   ],

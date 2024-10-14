@@ -16,10 +16,13 @@ fi
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  vscode
+  npm
   zsh-completions
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
+source $ZSH/oh-my-zsh.sh
 
 # ls alternative
 alias ls="eza"
@@ -37,10 +40,10 @@ alias ohmyzsh="cd ~/.oh-my-zsh"
 # navigate to global ssh directory
 alias sshhome="cd ~/.ssh"
 # edit global ssh configuration
-alias sshconfig="vim ~/.ssh/config"
+alias sshconfig="code ~/.ssh/config"
 
 # edit global git configuration
-alias gitconfig="vim ~/.gitconfig"
+alias gitconfig="code ~/.gitconfig"
 
 # git aliases
 alias gits="git status"

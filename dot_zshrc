@@ -60,12 +60,17 @@ autoload -U compinit && compinit
 # use nvm
 source /opt/homebrew/opt/nvm/nvm.sh
 
+# Console Ninja VSCode Extension
 PATH=~/.console-ninja/.bin:$PATH
 
 # Shell integrations
 eval "$(zoxide init zsh)"
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+
+# Run fastfetch
+fastfetch
 
 # use starship theme (needs to be at the end)
 eval "$(starship init zsh)"

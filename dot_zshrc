@@ -31,7 +31,7 @@ alias ls="eza"
 alias ip="ipconfig getifaddr en0"
 
 # edit global zsh configuration
-alias zshconfig="vim ~/.zshrc"
+alias zshconfig="code ~/.zshrc"
 # reload zsh configuration
 alias zshsource="source ~/.zshrc"
 # reload zsh configuration

@@ -43,25 +43,23 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Catppuccin Mocha Blur"
+    "dark": "Catppuccin Mocha (Blur)"
   },
 
   // --------------------------------------------------
   // Extensions
   // --------------------------------------------------
-  {
-    "auto_install_extensions": {
-      "biome": true,
-      "catppuccin-icons": true,
-      "catppuccin-blur": true,
-      "emmet": true,
-      "git-firefly": true,
-      "html": true,
-      "markdownlint": true,
-      "wakatime": true
-    }
-  }
 
+  "auto_install_extensions": {
+    "biome": true,
+    "catppuccin-icons": true,
+    "catppuccin-blur": true,
+    "emmet": true,
+    "git-firefly": true,
+    "html": true,
+    "markdownlint": true,
+    "wakatime": true
+  },
 
   // --------------------------------------------------
   // Language Configuration
@@ -99,16 +97,7 @@
   // --------------------------------------------------
   "terminal": {
     "shell": {
-      {{- if eq .chezmoi.os "windows" }}
-      "with_args": {
-        "program": "wsl.exe",
-        "args": ["--cd", ".", "-e", "zsh"]
-      }
-      {{- else if eq .chezmoi.os "darwin" }}
-      "program": "/bin/zsh"
-      {{- else }}
       "program": "/usr/bin/zsh"
-      {{- end }}
     }
   }
 }

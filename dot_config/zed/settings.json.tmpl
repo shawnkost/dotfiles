@@ -36,5 +36,19 @@
 		"mode": "system",
 		"light": "One Light",
 		"dark": "Catppuccin Mocha"
-	}
+	},
+  "terminal": {
+    "shell": {
+      {{- if eq .chezmoi.os "windows" }}
+        "with_args": {
+          "program": "wsl.exe",
+          "args": ["--cd", ".", "-e", "zsh"]
+        }
+      {{- else if eq .chezmoi.os "darwin" }}
+      "program": "/bin/zsh"
+      {{- else }}
+      "program": "/usr/bin/zsh"
+      {{- end }}
+    }
+}
 }

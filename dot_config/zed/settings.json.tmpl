@@ -1,54 +1,114 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
+// --------------------------------------------------
+// Zed Configuration
+// Docs: https://zed.dev/docs/configuring-zed
+// --------------------------------------------------
 {
-	"project_panel": {
-		"dock": "right"
-	},
-	"agent": {
-		"dock": "left",
-		"model_parameters": []
-	},
-	"languages": {
-		"Astro": { "formatter": { "language_server": { "name": "biome" } } },
-		"JavaScript": { "formatter": { "language_server": { "name": "biome" } } },
-		"TypeScript": { "formatter": { "language_server": { "name": "biome" } } },
-		"TSX": { "formatter": { "language_server": { "name": "biome" } } },
-		"JSON": { "formatter": { "language_server": { "name": "biome" } } },
-		"JSONC": { "formatter": { "language_server": { "name": "biome" } } },
-		"CSS": { "formatter": { "language_server": { "name": "biome" } } },
-		"GraphQL": { "formatter": { "language_server": { "name": "biome" } } }
-	},
-	"bottom_dock_layout": "contained",
-	"vim_mode": false,
-	"ui_font_family": ".ZedMono",
-	"base_keymap": "VSCode",
-	"ui_font_size": 16,
-	"buffer_font_size": 16.0,
-	"buffer_font_family": "JetBrains Mono",
-	"autosave": "on_window_change",
-	"theme": {
-		"mode": "system",
-		"light": "One Light",
-		"dark": "Catppuccin Mocha"
-	},
+  // --------------------------------------------------
+  // Layout & Panels
+  // --------------------------------------------------
+  "project_panel": {
+    "dock": "right"
+  },
+
+  "agent": {
+    "dock": "left",
+    "model_parameters": []
+  },
+
+  "bottom_dock_layout": "contained",
+
+  // --------------------------------------------------
+  // Editor Behavior
+  // --------------------------------------------------
+  "vim_mode": false,
+  "autosave": "on_window_change",
+
+  // --------------------------------------------------
+  // Keybindings
+  // --------------------------------------------------
+  "base_keymap": "VSCode",
+
+  // --------------------------------------------------
+  // Fonts
+  // --------------------------------------------------
+  "ui_font_family": ".ZedMono",
+  "ui_font_size": 16,
+
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 16.0,
+
+  // --------------------------------------------------
+  // Theme
+  // --------------------------------------------------
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Mocha Blur"
+  },
+
+  // --------------------------------------------------
+  // Extensions
+  // --------------------------------------------------
+  {
+    "auto_install_extensions": {
+      "biome": true,
+      "catppuccin-icons": true,
+      "catppuccin-blur": true,
+      "emmet": true,
+      "git-firefly": true,
+      "html": true,
+      "markdownlint": true,
+      "wakatime": true
+    }
+  }
+
+
+  // --------------------------------------------------
+  // Language Configuration
+  // --------------------------------------------------
+  "languages": {
+    // Biome-formatted languages
+    "Astro": {
+      "formatter": { "language_server": { "name": "biome" } }
+    },
+    "JavaScript": {
+      "formatter": { "language_server": { "name": "biome" } }
+    },
+    "TypeScript": {
+      "formatter": { "language_server": { "name": "biome" } }
+    },
+    "TSX": {
+      "formatter": { "language_server": { "name": "biome" } }
+    },
+    "JSON": {
+      "formatter": { "language_server": { "name": "biome" } }
+    },
+    "JSONC": {
+      "formatter": { "language_server": { "name": "biome" } }
+    },
+    "CSS": {
+      "formatter": { "language_server": { "name": "biome" } }
+    },
+    "GraphQL": {
+      "formatter": { "language_server": { "name": "biome" } }
+    }
+  },
+
+  // --------------------------------------------------
+  // Terminal (chezmoi-templated, OS-specific)
+  // --------------------------------------------------
   "terminal": {
     "shell": {
       {{- if eq .chezmoi.os "windows" }}
-        "with_args": {
-          "program": "wsl.exe",
-          "args": ["--cd", ".", "-e", "zsh"]
-        }
+      "with_args": {
+        "program": "wsl.exe",
+        "args": ["--cd", ".", "-e", "zsh"]
+      }
       {{- else if eq .chezmoi.os "darwin" }}
       "program": "/bin/zsh"
       {{- else }}
       "program": "/usr/bin/zsh"
       {{- end }}
     }
-}
+  }
 }

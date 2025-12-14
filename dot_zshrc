@@ -23,6 +23,12 @@ plugins=(
 source "$ZSH/oh-my-zsh.sh"
 
 # -------------------------------------
+# Editor
+# -------------------------------------
+export EDITOR="zed"
+export VISUAL="$EDITOR"
+
+# -------------------------------------
 # Aliases
 # -------------------------------------
 alias ls="eza"
@@ -32,13 +38,13 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   alias ip="ipconfig getifaddr en0"
 fi
 
-alias zshconfig="code ~/.zshrc"
+alias zshconfig="$EDITOR ~/.zshrc"
 alias zshsource="source ~/.zshrc"
 alias ohmyzsh="cd ~/.oh-my-zsh"
 
 alias sshhome="cd ~/.ssh"
-alias sshconfig="code ~/.ssh/config"
-alias gitconfig="code ~/.gitconfig"
+alias sshconfig="$EDITOR ~/.ssh/config"
+alias gitconfig="$EDITOR ~/.gitconfig"
 
 alias loc="npx sloc --format cli-table --format-option head --exclude 'build|\.svg$\.xml' ./"
 

@@ -97,7 +97,11 @@
   // --------------------------------------------------
   "terminal": {
     "shell": {
+      {{- if eq .chezmoi.os "darwin" }}
+      "program": "/bin/zsh"
+      {{- else }}
       "program": "/usr/bin/zsh"
+      {{- end }}
     }
   }
 }

@@ -1,8 +1,20 @@
+# ------------------------------------
+# Helpers
+# ------------------------------------
+path_add() {
+  [ -d "$1" ] || return
+  case ":$PATH:" in
+    *":$1:"*) ;;
+    *) export PATH="$1:$PATH" ;;
+  esac
+}
+
 # -------------------------------------
 # PATH (portable, safe)
 # -------------------------------------
-[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
-[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
+path_add "$HOME/bin"
+path_add "$HOME/.local/bin"
+path_add "$HOME/.opencode/bin"
 
 # -------------------------------------
 # Oh My Zsh
@@ -33,10 +45,7 @@ export VISUAL="$EDITOR"
 # -------------------------------------
 alias ls="eza"
 
-# macOS-only alias
-if [[ "$(uname -s)" == "Darwin" ]]; then
-  alias ip="ipconfig getifaddr en0"
-fi
+alias ip="ipconfig getifaddr en0"
 
 alias zshconfig="$EDITOR ~/.zshrc"
 alias zshsource="source ~/.zshrc"
@@ -63,23 +72,14 @@ export NVM_DIR="$HOME/.nvm"
 # -------------------------------------
 # pnpm
 # -------------------------------------
-if [[ "$(uname -s)" == "Darwin" ]]; then
-  export PNPM_HOME="$HOME/Library/pnpm"
-elif [[ -d "$HOME/.local/share/pnpm" ]]; then
-  export PNPM_HOME="$HOME/.local/share/pnpm"
-fi
-
-if [[ -n "$PNPM_HOME" && -d "$PNPM_HOME" ]]; then
-  case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-  esac
-fi
+export PNPM_HOME="$HOME/Library/pnpm"
+path_add "$PNPM_HOME"
+path_add "$PNPM_HOME/bin"
 
 # -------------------------------------
 # Spicetify (macOS only)
 # -------------------------------------
-[ -d "$HOME/.spicetify" ] && export PATH="$PATH:$HOME/.spicetify"
+path_add "$HOME/.spicetify"
 
 # -------------------------------------
 # Carapace (only if installed)
@@ -99,15 +99,3 @@ command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 # starship
 # -------------------------------------
 command -v starship >/dev/null && eval "$(starship init zsh)"
-
-# pnpm
-export PNPM_HOME="/Users/shawn/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
-export PATH="$HOME/.local/bin:$PATH"
-
-# opencode
-export PATH=/Users/shawn/.opencode/bin:$PATH
